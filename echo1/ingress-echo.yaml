@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "cert-manager-config"
+spec:
+  tls:
+  - hosts:
+    - echo1.devopstests.com
+    secretName: echo-tls
+  rules:
+  - host: echo1.devopstests.com
+    http:
+      paths:
+      - backend:
+          serviceName: echo1
+          servicePort: 80

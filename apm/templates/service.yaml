@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.release.name }}
+  labels:
+    {{ .Values.release.release }}
+spec:
+  selector:
+    app: {{ .Values.release.name }}
+  type: {{ .Values.release.serviceType }}
+  ports:
+    - port: {{ .Values.release.port }}
+      targetPort: {{ .Values.release.port }}
+

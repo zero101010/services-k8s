@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.release.name}}-isssngress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "cert-manager-config"
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.release.name}}.devopstests.com
+    secretName: {{ .Values.release.name}}-tls
+  rules:
+  - host: {{ .Values.release.name}}.devopstests.com
+    http:
+      paths:
+      - backend:
+          serviceName: {{ .Values.release.name }}
+          servicePort: {{ .Values.release.port }}

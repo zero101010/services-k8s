@@ -1,0 +1,7 @@
+release:
+  name: front-apm
+  port: 80
+  replicaCount: 1
+  serviceType: ClusterIP
+  image: zero101010/front-prod
+

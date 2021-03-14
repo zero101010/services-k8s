@@ -1,0 +1,6 @@
+release:
+  name: apm
+  port: 3000
+  replicaCount: 1
+  serviceType: ClusterIP
+  image: zero101010/api-server-apm
